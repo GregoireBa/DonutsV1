@@ -14,7 +14,7 @@ class MainController extends AbstractController
     public function index(): Response
     {
         //commentaire testes
-        return $this->render('index.html.twig', [
+        return $this->render('home.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }
