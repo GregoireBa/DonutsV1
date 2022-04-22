@@ -1,0 +1,217 @@
+/* 
+
+PALLETTE DE COULEURS
+
+#FF88EA <--- MENU
+#FF88AE
+#FF9D88
+#FFD988
+#EAFF88
+#AEFF88
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: rgb(97, 174, 254);
+    background: -moz-linear-gradient(90deg, rgba(97, 174, 254, 1) 0%, rgba(174, 157, 253, 1) 50%, rgba(251, 144, 253, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(97, 174, 254, 1) 0%, rgba(174, 157, 253, 1) 50%, rgba(251, 144, 253, 1) 100%);
+    background: linear-gradient(90deg, rgba(97, 174, 254, 1) 0%, rgba(174, 157, 253, 1) 50%, rgba(251, 144, 253, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#61aefe", endColorstr="#fb90fd", GradientType=1);
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0 5px 5px #755CA5;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+img {
+    width: 100%;
+}
+
+/* MENU */
+
+.navbar {
+    margin: 10px 0;
+}
+
+.logo {
+    position: absolute;
+    top: 9px;
+    left: 51%;
+    transform: translate(-50%);
+    width: 260px;
+}
+
+.menuflex {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item a {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 17px;
+    margin: 0 5px;
+    text-transform: uppercase;
+    text-shadow: 0px 5px 5px #755CA5;
+    transition: all 0.3s;
+}
+
+.nav-item a:hover {
+    color: white;
+    text-shadow: 0px 0px 0px #755CA5;
+}
+/* BTN CONNEXION SI PAS LOG */
+
+.btn-co{
+    background-color:white;
+    box-shadow:0 3px 6px #ACA3E4;
+    padding:7px 15px;
+    border-radius: 50px;
+    font-size:15px;
+    border:none;
+    transition: all 0.3s;
+    margin-right: 20px;
+}
+
+/* PANIER */
+
+.box-panier {
+    background-color: white;
+    box-shadow: 0 3px 6px rgb(0, 0, 0, 0.4);
+    padding: 13px 10px;
+    border-radius: 50px;
+    margin-right: 20px;
+}
+
+.btn-panier {
+    background-color: #BA9BFD;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 3px 6px rgb(0, 0, 0, 0.16);
+    box-shadow: 0 3px 6px #BA9BFD;
+    padding: 7px 15px;
+    transition: all 0.3s;
+
+}
+
+.btn-panier:hover {
+    color: #f4efffd7;
+    box-shadow: 0 3px 6px #ba9bfdab;
+    background-color: #8f6dda;
+}
+
+.nbarticles {
+    background-color: #D496FD;
+    padding: 7px 25px;
+    border-radius: 50px;
+    color: white;
+    margin: 0 5px;
+}
+
+
+/* FICHE DONUTS */
+
+.prix_donut{
+    position: absolute;
+    padding: 5px 10px;
+    background-color: #FFFFB7;
+    font-size: 15px;
+    right: 0;
+    top: -15px;
+    border-radius: 50px;
+    box-shadow: 0 3px 6px #aca3e4;
+}
+
+.fiche_donuts {
+    position: relative;
+    width: 370px;
+    background-color: #E4DBFE;
+    border-radius: 19px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.fiche_donuts img {
+    padding: 30px;
+}
+
+.fiche_donuts p {
+    font-size: 9px;
+    font-weight: 400;
+    margin: 4px 0px;
+}
+
+.btn-commande{
+    background-color:white;
+    box-shadow:0 3px 6px #ACA3E4;
+    padding:7px 15px;
+    border-radius: 50px;
+    font-size:15px;
+    border:none;
+    margin: 0 0 10px 0;
+    transition: all 0.3s;
+}
+.btn-commande:hover{
+    color:rgba(0, 0, 0, 0.527);
+    box-shadow:0 0px 0px #ACA3E4;
+}
+
+
+/* SLIDER */
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-top:60px;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 140px;
+    left: 0;
+    width: 100%;
+}
+.swiper-pagination-bullet-active {
+background:#E4609C;
+}

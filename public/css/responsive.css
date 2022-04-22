@@ -1,0 +1,18 @@
+@media (max-width:768px) {
+
+    .logo{
+        position:none;
+        width:180px;
+    }
+
+    .menuflex{
+        display:flex;
+        flex-direction: column;
+        text-align: center;
+        margin-top:10px;
+    }
+
+    .box-panier{
+        margin-top:10px;
+    }
+}
