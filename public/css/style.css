@@ -38,6 +38,9 @@ h1 {
 img {
     width: 100%;
 }
+.img-tab{
+    max-width:100px;
+}
 
 /* MENU */
 
