@@ -87,6 +87,11 @@ img {
     margin-right: 20px;
 }
 
+.btn-co:hover{
+    color:rgba(0, 0, 0, 0.527);
+    box-shadow:0 0px 0px #ACA3E4;
+}
+
 /* PANIER */
 
 .box-panier {
