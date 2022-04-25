@@ -22,7 +22,7 @@
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-fluid">
 
-				<a class="navbar-brand" href="#"><img class="logo" src="../img/logoV2.png"></a>
+				<a class="navbar-brand" href="main"><img class="logo" src="../img/logoV2.png"></a>
 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
 					<i class="fa-solid fa-bars-staggered"></i>
@@ -42,17 +42,17 @@
 						</ul>
 					</div>
 
-					
-					{# BOUTON CONNEXION SI PAS LOG #}
-					{# <button class="btn-connexion btn-co">Connexion</button> #}
 
-					{# PANIER #}
-					<div class="box-panier">
-						<a href="#" alt="panier" class="btn-panier">
-							<i class="fa-solid fa-cart-shopping"></i>
-						</a>
-						<span class="nbarticles">1</span>
-					</div>
+						{# BOUTON CONNEXION SI PAS LOG #}
+						<a href="login"><button class="btn-connexion btn-co">Connexion</button></a>
+
+						{# PANIER #}
+						{# <div class="box-panier"> 
+							<a href="#" alt="panier" class="btn-panier">
+								<i class="fa-solid fa-cart-shopping"></i>
+							</a>
+							<span class="nbarticles">1</span>
+						</div> #}
 
 				</div>
 			</div>
@@ -60,9 +60,7 @@
 	</header>
 
 	<body>
-		{% block body %}
-        
-        {% endblock %}
+		{% block body %}{% endblock %}
 
 
 	</body>
