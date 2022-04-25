@@ -43,16 +43,28 @@
 					</div>
 
 
-						{# BOUTON CONNEXION SI PAS LOG #}
-						<a href="{{ path ('app_login') }}"><button class="btn-connexion btn-co">Connexion</button></a>
-
-						{# PANIER #}
-						{# <div class="box-panier"> 
-							<a href="#" alt="panier" class="btn-panier">
-								<i class="fa-solid fa-cart-shopping"></i>
+					{# BOUTON CONNEXION SI PAS LOG #}
+					{% if app.user %}
+						<a href="{{ path ('app_logout') }}">
+								<button class="btn-connexion btn-co">Déconnexion</button>
 							</a>
-							<span class="nbarticles">1</span>
-						</div> #}
+						{% else %}
+							<a href="{{ path ('app_login') }}">
+								<button class="btn-connexion btn-co">Connexion</button>
+							</a>
+							<a href="{{ path ('front_create_user') }}">
+								<button class="btn-connexion btn-co">Inscription</button>
+							</a>
+
+					{% endif %}
+
+					{# PANIER #}
+					{# <div class="box-panier"> 
+												<a href="#" alt="panier" class="btn-panier">
+													<i class="fa-solid fa-cart-shopping"></i>
+												</a>
+												<span class="nbarticles">1</span>
+											</div> #}
 
 				</div>
 			</div>

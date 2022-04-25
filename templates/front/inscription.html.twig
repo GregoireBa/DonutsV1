@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+{{form_start(userForm)}}
+
+        {{form_label(userForm.email,'Email :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(userForm.email, {'attr' : {'class' : 'input', 'placeholder' : 'Email'}})}}
+
+        {{form_label(userForm.password,'Password :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(userForm.password, {'attr' : {'class' : 'input', 'placeholder' : 'password'}})}}
+
+        {{form_label(userForm.name,'name :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(userForm.name, {'attr' : {'class' : 'input', 'placeholder' : 'name'}})}}
+
+        {{form_label(userForm.firstname,'firstname :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(userForm.firstname, {'attr' : {'class' : 'input', 'placeholder' : 'firstname'}})}}
+
+        {{form_widget(userForm.Enregistrer, {'attr' : {'class' : 'input',}})}}
+
+	{{form_end(userForm)}}
+{% endblock %}
