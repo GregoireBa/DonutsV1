@@ -9,6 +9,8 @@ PALLETTE DE COULEURS
 #EAFF88
 #AEFF88
 
+COULEUR TEXTE --> rgba(0, 0, 0, 0.527)
+
 */
 
 * {
@@ -16,6 +18,26 @@ PALLETTE DE COULEURS
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+
+/* BTN */
+
+/* BTN AJOUTER */
+
+.btn-green{
+    box-shadow:0 3px 6px #ffffff69;
+    padding:7px 15px;
+    border-radius: 50px;
+    font-size:15px;
+    border:none;
+    transition: all 0.3s;
+    text-decoration: none;
+    color:rgb(255, 255, 255);
+    margin-top:50px;
+}
+.btn-green:hover{
+    color:rgba(0, 0, 0, 0.527);
+    box-shadow:0 0px 0px #ACA3E4;
 }
 
 body {
@@ -239,4 +261,60 @@ background:#E4609C;
 
 .input-login{
     background-color:rgb(255, 255, 255,0.6);
+}
+
+/* TABLEAU */
+
+.table{
+    vertical-align: middle;
+    margin-bottom: 0;
+    margin-top:20px;
+}
+.footer-tab{
+    width: 100%;
+    height:50px;
+    background-color:white;
+    border-top:2px solid #bebebe;
+    border-radius:0px 0 10px 10px;
+    margin-bottom: 10px;
+}
+
+.tab-thead{
+    background-color:white;
+    border-bottom:2px solid #bebebe;
+    height:50px;
+}
+
+.tab-thead tr th{
+    vertical-align: middle;
+}
+
+.br-thead-left{
+    border-radius:10px 0 0 0;
+}
+
+.br-thead-right{
+    border-radius:0 10px 0 0;
+}
+.tab-tbody{
+    background-color:#ffffff;
+}
+.tab-tbody tr:nth-child(odd){
+    background-color:#f9f9f9;
+}
+
+
+/* BTN ACTION TABLEAU */
+
+.btn-action{
+    text-decoration: none;
+    font-size:20px;
+    color:#212529;
+    text-shadow:0 3px 6px #ACA3E4;
+    background-color:white;
+    margin:0 5px;
+    transition: all 0.3s;
+}
+.btn-action:hover{
+    color:#21252965;
 }

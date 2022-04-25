@@ -1,23 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProduitController!
-{% endblock %}
-
 {% block body %}
 	<div class="container">
+
+		<div class="mt-5">
+		<a href="{{path('admin_create_produit')}}" class="btn-green btn-success">Ajouter un produit</a>
+		</div>
+
 		<table class="table">
-			<thead>
+			<thead class="tab-thead">
 				<tr>
-					<th scope="col">ID</th>
+					<th class="br-thead-left" scope="col">ID</th>
 					<th scope="col">Titre</th>
 					<th scope="col">Description</th>
 					<th scope="col">Photo</th>
 					<th scope="col">Prix</th>
 					<th scope="col">Stock</th>
-					<th scope="col">Action</th>
+					<th class="br-thead-right" scope="col">Action</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="tab-tbody">
 				{% for produit in produits %}
 					<tr>
 						<th scope="row">{{produit.id}}</th>
@@ -27,10 +29,10 @@
 						<td>{{produit.prix}}€</td>
 						<td>{{produit.stock}}</td>
 						<td>
-							<a href="{{ path('admin_update_produit', {'id' : produit.id}) }}">
+							<a class="btn-action" href="{{ path('admin_update_produit', {'id' : produit.id}) }}">
 								<i class="fa-solid fa-pen-to-square"></i>
 							</a>
-							<a href="{{ path('admin_delete_produit', {'id' : produit.id}) }}">
+							<a class="btn-action" href="{{ path('admin_delete_produit', {'id' : produit.id}) }}">
 								<i class="fa-solid fa-trash-can"></i>
 							</a>
 
@@ -39,6 +41,6 @@
 				{% endfor %}
 			</tbody>
 		</table>
+			<div class="footer-tab"></div>
 	</div>
-    <div class="container"><a href="{{path('admin_create_produit')}}" class="btn btn-success">Ajouter un produit</a></div>
 {% endblock %}
