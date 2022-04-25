@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+ {{form_start(produitForm)}}
+
+        {{form_label(produitForm.titre,'Titre :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(produitForm.titre, {'attr' : {'class' : 'input', 'placeholder' : 'Titre'}})}}
+
+        {{form_label(produitForm.description,'Description :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(produitForm.description, {'attr' : {'class' : 'input', 'placeholder' : 'Description'}})}}
+
+        {{form_label(produitForm.saveur,'Saveur :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(produitForm.saveur, {'attr' : {'class' : 'input', 'placeholder' : 'Saveur'}})}}
+
+        {{form_label(produitForm.prix,'Prix :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(produitForm.prix, {'attr' : {'class' : 'input', 'placeholder' : 'Prix'}})}}
+
+        {{form_label(produitForm.stock,'Stock :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(produitForm.stock, {'attr' : {'class' : 'input', 'placeholder' : 'Stock'}})}}
+
+        {{form_label(produitForm.photo,'Photo  :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(produitForm.photo, {'attr' : {'class' : 'input', 'placeholder' : 'Photo'}})}}
+
+        {{form_widget(produitForm.Enregistrer, {'attr' : {'class' : 'input',}})}}
+
+	{{form_end(produitForm)}}
+{% endblock %}
