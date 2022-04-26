@@ -42,25 +42,48 @@
 						</ul>
 					</div>
 
-
-					{# BOUTON CONNEXION SI PAS LOG #}
+					{# SI L'USER EST CO BOUTON PROFIL + DECONNEXION + PANIER #}
 					{% if app.user %}
-						<a href="{{ path ('app_logout') }}">
-							<button class="btn-connexion btn-co">Déconnexion</button>
-						</a>
-						<div class="box-panier">
-							<a href="#" alt="panier" class="btn-panier">
-								<i class="fa-solid fa-cart-shopping"></i>
+						<div class="box-btn-menu">
+
+							{# PANIER #}
+							<a href="#" class="a-panier">
+								<div class="box-panier">
+
+									<i class="fa-solid fa-cart-shopping btn-panier"></i>
+									<span class="s-text">Panier</span>
+
+									<span class="nbarticles">1</span>
+								</div>
 							</a>
-							<span class="nbarticles">1</span>
+
+							{# USER #}
+							<a href="#" class="a-user">
+								<div class="box-user">
+										<i class="fa-solid fa-user btn-panier"></i>
+										<span class="s-text-user">Bonjour, utilisateur</span>
+								</div>
+							</a>
+
+							<a href="{{ path ('app_logout') }}" class="btn-deco">
+								<i class="fa-solid fa-circle-xmark"></i>
+							</a>
+
+
 						</div>
+						{# BOUTON CONNEXION SI PAS LOG OU INSCRIPTION SI PAS INSCRIT #}
 					{% else %}
-						<a href="{{ path ('app_login') }}">
-							<button class="btn-connexion btn-co">Connexion</button>
-						</a>
-						<a href="{{ path ('front_create_user') }}">
-							<button class="btn-connexion btn-co">Inscription</button>
-						</a>
+						<div class="box-btn-menu">
+
+							<a href="{{ path ('app_login') }}">
+								<button class="btn-connexion btn-co">Connexion</button>
+							</a>
+
+							<a href="{{ path ('front_create_user') }}">
+								<button class="btn-connexion btn-co">Inscription</button>
+							</a>
+
+						</div>
 					{% endif %}
 				</div>
 			</div>
