@@ -58,10 +58,10 @@
 							</a>
 
 							{# USER #}
-							<a href="#" class="a-user">
+							<a href="{{path('front_update_user')}}" class="a-user">
 								<div class="box-user">
 										<i class="fa-solid fa-user btn-panier"></i>
-										<span class="s-text-user">Bonjour, utilisateur</span>
+										<span class="s-text-user">Bonjour, {{user.name}}</span>
 								</div>
 							</a>
 
@@ -71,8 +71,8 @@
 
 
 						</div>
-						{# BOUTON CONNEXION SI PAS LOG OU INSCRIPTION SI PAS INSCRIT #}
 					{% else %}
+						{# BOUTON CONNEXION SI PAS LOG OU INSCRIPTION SI PAS INSCRIT #}
 						<div class="box-btn-menu">
 
 							<a href="{{ path ('app_login') }}">
@@ -91,9 +91,9 @@
 	</header>
 
 	<body>
-		{% block body %}{% endblock %}
-
-
+		{% block body %}
+		
+		{% endblock %}
 	</body>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

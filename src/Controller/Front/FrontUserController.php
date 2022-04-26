@@ -4,12 +4,13 @@ namespace App\Controller\Front;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class FrontUserController extends AbstractController
 {
@@ -40,5 +41,52 @@ class FrontUserController extends AbstractController
         }
 
         return $this->render('front/inscription.html.twig', ['userForm' => $userForm->createView()]);
+    }
+
+    /**
+     * @Route("/front/updateuser", name="front_update_user")
+     */
+
+    public function userUpdate(
+        Request $request,
+        EntityManagerInterface $entityManagerInterface,
+        UserRepository $userRepository,
+        UserPasswordHasherInterface $userPasswordHasherInterface
+    ) {
+        // getUser récupère le user connecté 
+        $user_connect = $this->getUser();
+
+        $user_email = $user_connect->getUserIdentifier();
+
+        $user = $userRepository->findOneBy(['email' => $user_email]);
+
+        $userForm = $this->createForm(UserType::class, $user);
+
+        $userForm->handleRequest($request);
+
+        if ($userForm->isSubmitted() && $userForm->isValid()) {
+
+            $plainPassword = $userForm->get('password')->getData();
+            $hashedpasword = $userPasswordHasherInterface->hashPassword($user, $plainPassword);
+            $user->setPassword($hashedpasword);
+
+            $entityManagerInterface->persist($user);
+            $entityManagerInterface->flush();
+
+            return $this->redirectToRoute('front_update_user');
+        }
+
+        if($this->getUser()){
+            $user_connect = $this->getUser();
+            
+            $user_email = $user_connect->getUserIdentifier();
+            
+            $user = $userRepository->findOneBy(['email' => $user_email]);
+            
+            $id = $user->getId();
+            
+            $user = $userRepository->find($id);
+            return $this->render("front/user_form.html.twig", ['user' => $user, 'userForm' => $userForm->createView()]);
+            }
     }
 }
