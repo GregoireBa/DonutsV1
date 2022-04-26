@@ -6,16 +6,31 @@
 {{form_start(userForm)}}
 
         {{form_label(userForm.email,'Email :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.email, {'attr' : {'class' : 'form-control input-login', 'placeholder' : 'Email'}})}}
+        {{form_widget(userForm.email, {'attr' : {'class' : 'form-control input-login'}})}}
 
-        {{form_label(userForm.password,'Password :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.password, {'attr' : {'class' : 'form-control input-login', 'placeholder' : 'password'}})}}
+        {{form_label(userForm.password,'Mot de passe :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userForm.password, {'attr' : {'class' : 'form-control input-login'}})}}
 
-        {{form_label(userForm.name,'name :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.name, {'attr' : {'class' : 'form-control input-login', 'placeholder' : 'name'}})}}
+        {{form_label(userForm.name,'Nom :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userForm.name, {'attr' : {'class' : 'form-control input-login'}})}}
 
-        {{form_label(userForm.firstname,'firstname :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.firstname, {'attr' : {'class' : 'form-control input-login', 'placeholder' : 'firstname'}})}}
+        {{form_label(userForm.firstname,'Prénom :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userForm.firstname, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_label(userForm.adresse,'adresse :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userForm.adresse, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_label(userForm.cp,'Code postal :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userForm.cp, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_label(userForm.ville,'Ville :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userForm.ville, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_label(userForm.pays,'Pays :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userForm.pays, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_label(userForm.telephone,'Téléphone :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userForm.telephone, {'attr' : {'class' : 'form-control input-login'}})}}
 
         {{form_widget(userForm.Enregistrer, {'attr' : {'class' : 'btn btn-lg mt-3 btn-co btn-co-login',}})}}
 

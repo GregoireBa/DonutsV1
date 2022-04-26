@@ -20,6 +20,11 @@ class UserType extends AbstractType
             ])
             ->add('name')
             ->add('firstname')
+            ->add('adresse')
+            ->add('cp')
+            ->add('ville')
+            ->add('pays')
+            ->add('telephone')
             ->add('Enregistrer',SubmitType::class)
         ;
     }
