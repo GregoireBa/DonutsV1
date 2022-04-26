@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FrontCommandeController!{% endblock %}
+
+{% block body %}
+{{form_start(commandeForm)}}
+
+        {{form_label(commandeForm.titre,'Titre :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(commandeForm.titre, {'attr' : {'class' : 'input', 'placeholder' : 'Titre'}})}}
+
+        {{form_label(commandeForm.description,'Description :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(commandeForm.description, {'attr' : {'class' : 'input', 'placeholder' : 'Description'}})}}
+
+        {{form_label(commandeForm.saveur,'Saveur :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(commandeForm.saveur, {'attr' : {'class' : 'input', 'placeholder' : 'Saveur'}})}}
+
+        {{form_label(commandeForm.prix,'Prix :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(commandeForm.prix, {'attr' : {'class' : 'input', 'placeholder' : 'Prix'}})}}
+
+        {{form_label(commandeForm.stock,'Stock :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(commandeForm.stock, {'attr' : {'class' : 'input', 'placeholder' : 'Stock'}})}}
+
+        {{form_label(commandeForm.photo,'Photo  :', {'label_attr' : {'class' : 'label'}})}}
+        {{form_widget(commandeForm.photo, {'attr' : {'class' : 'input', 'placeholder' : 'Photo'}})}}
+
+        {{form_widget(commandeForm.Enregistrer, {'attr' : {'class' : 'input',}})}}
+
+	{{form_end(commandeForm)}}
+{% endblock %}
