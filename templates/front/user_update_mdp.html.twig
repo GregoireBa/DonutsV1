@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+{{form_start(userMdp)}}
+        
+        {{form_label(userMdp.password.first,'Mot de passe :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userMdp.password.first, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_label(userMdp.password.second,'Répètez le mot de passe :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userMdp.password.second, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_widget(userMdp.Enregistrer, {'attr' : {'class' : 'btn btn-lg mt-3 btn-co btn-co-login',}})}}
+
+{{form_end(userMdp)}}
+
+
+{% endblock %}

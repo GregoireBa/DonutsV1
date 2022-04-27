@@ -31,7 +31,7 @@
                 <div class="d-box-input">
 
 			<div class="box-info-profil">
-				<h2>Adresse de facturation</h2>
+				<h2>Adresse de livraison</h2>
 
 				<span>{{user.name}}</span>
 				<span>{{user.firstname}}</span>
@@ -43,13 +43,13 @@
 
 
 			<div class="box-button-edit">
-				<a href="#" class="btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
+				<a href="{{path ('front_update_user_adresse')}}" class="btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
 			</div>
 
 		</div>
                 
                 <div class="box-btn-edit-mdp">
-                <a href="#" class="btn-edit-mdp">Changer votre mot de passe</a>
+                <a href="{{path ('front_update_user_mdp')}}" class="btn-edit-mdp">Changer votre mot de passe</a>
                 </div>
 	</div>
 

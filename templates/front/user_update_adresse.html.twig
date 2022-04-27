@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+{{form_start(userAdresse)}}
+
+        {{form_label(userAdresse.name,'Nom :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userAdresse.name, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_label(userAdresse.firstname,'Prénom :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userAdresse.firstname, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_label(userAdresse.adresse,'Adresse :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userAdresse.adresse, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_label(userAdresse.cp,'Code postal :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userAdresse.cp, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_label(userAdresse.ville,'Ville :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userAdresse.ville, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_label(userAdresse.pays,'Pays :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userAdresse.pays, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_label(userAdresse.telephone,'Téléphone :', {'label_attr' : {'class' : 'mt-3'}})}}
+        {{form_widget(userAdresse.telephone, {'attr' : {'class' : 'form-control input-login'}})}}
+
+        {{form_widget(userAdresse.Enregistrer, {'attr' : {'class' : 'btn btn-lg mt-3 btn-co btn-co-login',}})}}
+
+{{form_end(userAdresse)}}
+
+{% endblock %}

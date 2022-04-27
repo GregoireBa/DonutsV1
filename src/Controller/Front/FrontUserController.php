@@ -4,8 +4,10 @@ namespace App\Controller\Front;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\UserupdateMdpType;
 use App\Form\UserUpdateEmailType;
 use App\Repository\UserRepository;
+use App\Form\UserupdateadresseType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,4 +92,72 @@ class FrontUserController extends AbstractController
 
         return $this->render("front/user_update_email.html.twig", ['userEmail' => $userForm->createView()]);
     }
+
+    /**
+     *  @Route("/front/updateadresse", name="front_update_user_adresse")
+     */
+
+    public function userAdresse(
+        Request $request,
+        EntityManagerInterface $entityManagerInterface,
+        UserRepository $userRepository
+    ) {
+
+        $user_connect = $this->getUser();
+
+        $user_email = $user_connect->getUserIdentifier();
+
+        $user = $userRepository->findOneBy(['email' => $user_email]);
+
+        $userForm = $this->createForm(UserupdateadresseType::class, $user);
+
+        $userForm->handleRequest($request);
+        if ($userForm->isSubmitted() && $userForm->isValid()) {
+
+            $entityManagerInterface->persist($user);
+            $entityManagerInterface->flush();
+
+            return $this->redirectToRoute('front_update_user');
+        }
+
+        return $this->render("front/user_update_adresse.html.twig", ['userAdresse' => $userForm->createView()]);
+    }
+
+    /**
+     *  @Route("/front/updatemdp", name="front_update_user_mdp")
+     */
+
+    public function userMdp(
+        Request $request,
+        EntityManagerInterface $entityManagerInterface,
+        UserRepository $userRepository,
+        UserPasswordHasherInterface $userPasswordHasherInterface
+    ) {
+
+        $user_connect = $this->getUser();
+
+        $user_email = $user_connect->getUserIdentifier();
+
+        $user = $userRepository->findOneBy(['email' => $user_email]);
+
+        $userForm = $this->createForm(UserupdateMdpType::class, $user);
+
+        $userForm->handleRequest($request);
+        
+        if ($userForm->isSubmitted() && $userForm->isValid()){
+
+            $plainPassword = $userForm->get('password')->getData();
+            $hashedpasword = $userPasswordHasherInterface->hashPassword($user, $plainPassword);
+            $user->setPassword($hashedpasword);
+
+            $entityManagerInterface->persist($user);
+            $entityManagerInterface->flush();
+
+            return $this->redirectToRoute('front_update_user');
+        }
+
+        return $this->render("front/user_update_mdp.html.twig", ['userMdp' => $userForm->createView()]);
+    }
+
+
 }
