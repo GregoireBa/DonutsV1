@@ -18,13 +18,13 @@ class FrontUserController extends AbstractController
     /**
      * @Route("/front/createuser", name="front_create_user")
      */
-    public function createuser(Request $request,EntityManagerInterface $entityManagerInterface,UserPasswordHasherInterface $userPasswordHasherInterface)
+    public function createuser(Request $request, EntityManagerInterface $entityManagerInterface, UserPasswordHasherInterface $userPasswordHasherInterface)
     {
         $user = new User();
-        $userForm = $this->createForm(UserType::class,$user);
+        $userForm = $this->createForm(UserType::class, $user);
         $userForm->handleRequest($request);
 
-        if($userForm->isSubmitted()&& $userForm->isValid()){
+        if ($userForm->isSubmitted() && $userForm->isValid()) {
             $user->setRoles(["ROLE_USER"]);
 
             // On récupère le password entré dans le formulaire.
@@ -38,7 +38,6 @@ class FrontUserController extends AbstractController
             $entityManagerInterface->flush();
 
             return $this->redirectToRoute('app_login');
-
         }
 
         return $this->render('front/inscription.html.twig', ['userForm' => $userForm->createView()]);
@@ -49,8 +48,6 @@ class FrontUserController extends AbstractController
      */
 
     public function userUpdate(
-        Request $request,
-        EntityManagerInterface $entityManagerInterface,
         UserRepository $userRepository
     ) {
         // getUser récupère le user connecté 
@@ -59,7 +56,8 @@ class FrontUserController extends AbstractController
         $user_email = $user_connect->getUserIdentifier();
 
         $user = $userRepository->findOneBy(['email' => $user_email]);
-        
+
+        return $this->render("front/user_form.html.twig", ["user" => $user]);
     }
 
     /**
@@ -71,7 +69,7 @@ class FrontUserController extends AbstractController
         EntityManagerInterface $entityManagerInterface,
         UserRepository $userRepository
     ) {
-        
+
         $user_connect = $this->getUser();
 
         $user_email = $user_connect->getUserIdentifier();
@@ -81,14 +79,15 @@ class FrontUserController extends AbstractController
         $userForm = $this->createForm(UserUpdateEmailType::class, $user);
 
         $userForm->handleRequest($request);
-
-        $entityManagerInterface->persist($user);
-        $entityManagerInterface->flush();
-
-        return $this->render("front/user_form.html.twig", ['userEmail' => $userForm->createView()]);
+        if ($userForm->isSubmitted() && $userForm->isValid()) {
 
 
+            $entityManagerInterface->persist($user);
+            $entityManagerInterface->flush();
+
+            return $this->redirectToRoute('front_update_user');
+        }
+
+        return $this->render("front/user_update_email.html.twig", ['userEmail' => $userForm->createView()]);
     }
-
-
 }
