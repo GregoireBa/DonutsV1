@@ -4,6 +4,7 @@ namespace App\Controller\Front;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\UserUpdateEmailType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,8 +51,7 @@ class FrontUserController extends AbstractController
     public function userUpdate(
         Request $request,
         EntityManagerInterface $entityManagerInterface,
-        UserRepository $userRepository,
-        UserPasswordHasherInterface $userPasswordHasherInterface
+        UserRepository $userRepository
     ) {
         // getUser récupère le user connecté 
         $user_connect = $this->getUser();
@@ -59,34 +59,36 @@ class FrontUserController extends AbstractController
         $user_email = $user_connect->getUserIdentifier();
 
         $user = $userRepository->findOneBy(['email' => $user_email]);
+        
+    }
 
-        $userForm = $this->createForm(UserType::class, $user);
+    /**
+     *  @Route("/front/updatemail", name="front_update_user_email")
+     */
+
+    public function userEmail(
+        Request $request,
+        EntityManagerInterface $entityManagerInterface,
+        UserRepository $userRepository
+    ) {
+        
+        $user_connect = $this->getUser();
+
+        $user_email = $user_connect->getUserIdentifier();
+
+        $user = $userRepository->findOneBy(['email' => $user_email]);
+
+        $userForm = $this->createForm(UserUpdateEmailType::class, $user);
 
         $userForm->handleRequest($request);
 
-        if ($userForm->isSubmitted() && $userForm->isValid()) {
+        $entityManagerInterface->persist($user);
+        $entityManagerInterface->flush();
 
-            $plainPassword = $userForm->get('password')->getData();
-            $hashedpasword = $userPasswordHasherInterface->hashPassword($user, $plainPassword);
-            $user->setPassword($hashedpasword);
+        return $this->render("front/user_form.html.twig", ['userEmail' => $userForm->createView()]);
 
-            $entityManagerInterface->persist($user);
-            $entityManagerInterface->flush();
 
-            return $this->redirectToRoute('front_update_user');
-        }
-
-        if($this->getUser()){
-            $user_connect = $this->getUser();
-            
-            $user_email = $user_connect->getUserIdentifier();
-            
-            $user = $userRepository->findOneBy(['email' => $user_email]);
-            
-            $id = $user->getId();
-            
-            $user = $userRepository->find($id);
-            return $this->render("front/user_form.html.twig", ['user' => $user, 'userForm' => $userForm->createView()]);
-            }
     }
+
+
 }

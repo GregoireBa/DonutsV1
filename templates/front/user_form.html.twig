@@ -1,28 +1,56 @@
 {% extends "base.html.twig" %}
 
 
-
 {% block body %}
-<div class="box-login">
-<h1 class="h3 mb-3 font-weight-normal">Profil</h1>
-{{form_start(userForm)}}
 
-        {{form_label(userForm.name,'Nom :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.name, {'attr' : {'class' : 'form-control input-login', 'placeholder' : 'name'}})}}
 
-        {{form_label(userForm.firstname,'Prénom :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.firstname, {'attr' : {'class' : 'form-control input-login', 'placeholder' : 'firstname'}})}}
+	<div class="box-page-standard">
+        <div class="donuts-panda"><img src="" alt=""></div>
+		<h1 class="h1-30 pt-2">Informations personnelles</h1>
 
-        {{form_label(userForm.email,'Email :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.email, {'attr' : {'class' : 'form-control input-login', 'placeholder' : 'Email'}})}}
+                {# EMAIL #}
+		<div class="d-box-input">
 
-        {{form_label(userForm.password,'Mot de passe :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.password, {'attr' : {'class' : 'form-control input-login', 'placeholder' : 'saisissez votre mdp pour confirmer'}})}}
+			<div class="box-info-profil">
+				<h2>Adresse email</h2>
 
-        {{form_widget(userForm.Enregistrer, {'attr' : {'class' : 'btn btn-lg mt-3 btn-co btn-co-login',}})}}
+				<span>{{user.email}}</span>
+			</div>
 
-{{form_end(userForm)}}
-</div>
+
+			<div class="box-button-edit">
+				<a href="{{path ('front_update_user_email')}}" class="btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
+			</div>
+
+		</div>
+
+		<hr class="hr-info">
+                
+                {# ADRESSE DE FACTURATION #}
+
+                <div class="d-box-input">
+
+			<div class="box-info-profil">
+				<h2>Adresse de facturation</h2>
+
+				<span>{{user.name}}</span>
+				<span>{{user.firstname}}</span>
+				<span>{{user.adresse}}</span>
+				<span>{{user.cp}}
+					{{user.ville}}</span>
+				<span>{{user.telephone}}</span>
+			</div>
+
+
+			<div class="box-button-edit">
+				<a href="#" class="btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
+			</div>
+
+		</div>
+                
+                <div class="box-btn-edit-mdp">
+                <a href="#" class="btn-edit-mdp">Changer votre mot de passe</a>
+                </div>
+	</div>
 
 {% endblock %}
-
