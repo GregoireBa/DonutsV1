@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class MainController extends AbstractController
 {
      /**
-     * @Route("/main", name="app_main")
+     * @Route("/", name="app_main")
      */
     public function produitsList(
         ProduitRepository $produitsRepository,
