@@ -71,6 +71,15 @@ img {
     max-width: 100px;
 }
 
+.error_msg{
+    padding:0;
+    margin:10px;
+}
+.error_msg ul{
+    list-style: none;
+    padding: 10px 20px;
+    margin: 0;
+}
 /* BTN */
 
 /* BTN AJOUTER */
