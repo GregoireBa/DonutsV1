@@ -1,39 +1,48 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<div class="box-login">
-<h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
-{{form_start(userForm)}}
 
-        {{form_label(userForm.email,'Email :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.email, {'attr' : {'class' : 'form-control input-login'}})}}
+	<div class="box-inscription">
+	<h1 class="h1-30 pt-2">Inscription</h1>
 
-        {{form_label(userForm.password,'Mot de passe :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.password, {'attr' : {'class' : 'form-control input-login'}})}}
+		{{form_start(userForm)}}
 
-        {{form_label(userForm.name,'Nom :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.name, {'attr' : {'class' : 'form-control input-login'}})}}
+                <h2 class="mt-5 mb-3">Identifiant</h2>
+		{{form_label(userForm.email,'Email :', {'label_attr' : {'class' : ''}})}}
+		{{form_widget(userForm.email, {'attr' : {'class' : 'form-control input-inscription'}})}}
 
-        {{form_label(userForm.firstname,'Prénom :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.firstname, {'attr' : {'class' : 'form-control input-login'}})}}
+		{{form_label(userForm.password,'Mot de passe :', {'label_attr' : {'class' : 'mt-3'}})}}
+		{{form_widget(userForm.password, {'attr' : {'class' : 'form-control input-inscription'}})}}
 
-        {{form_label(userForm.adresse,'adresse :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.adresse, {'attr' : {'class' : 'form-control input-login'}})}}
+                <hr class="m-5">
 
-        {{form_label(userForm.cp,'Code postal :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.cp, {'attr' : {'class' : 'form-control input-login'}})}}
+                <h2 class="mt-5 mb-3">Adresse de livraison</h2>
+		{{form_label(userForm.name,'Nom :', {'label_attr' : {'class' : ''}})}}
+		{{form_widget(userForm.name, {'attr' : {'class' : 'form-control input-inscription'}})}}
 
-        {{form_label(userForm.ville,'Ville :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.ville, {'attr' : {'class' : 'form-control input-login'}})}}
+		{{form_label(userForm.firstname,'Prénom :', {'label_attr' : {'class' : 'mt-3'}})}}
+		{{form_widget(userForm.firstname, {'attr' : {'class' : 'form-control input-inscription'}})}}
 
-        {{form_label(userForm.pays,'Pays :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.pays, {'attr' : {'class' : 'form-control input-login'}})}}
+		{{form_label(userForm.adresse,'Adresse :', {'label_attr' : {'class' : 'mt-3'}})}}
+		{{form_widget(userForm.adresse, {'attr' : {'class' : 'form-control input-inscription'}})}}
 
-        {{form_label(userForm.telephone,'Téléphone :', {'label_attr' : {'class' : 'mt-3'}})}}
-        {{form_widget(userForm.telephone, {'attr' : {'class' : 'form-control input-login'}})}}
+		{{form_label(userForm.cp,'Code postal :', {'label_attr' : {'class' : 'mt-3'}})}}
+		{{form_widget(userForm.cp, {'attr' : {'class' : 'form-control input-inscription'}})}}
 
-        {{form_widget(userForm.Enregistrer, {'attr' : {'class' : 'btn btn-lg mt-3 btn-co btn-co-login',}})}}
+		{{form_label(userForm.ville,'Ville :', {'label_attr' : {'class' : 'mt-3'}})}}
+		{{form_widget(userForm.ville, {'attr' : {'class' : 'form-control input-inscription'}})}}
 
-{{form_end(userForm)}}
-</div>
+		{{form_label(userForm.pays,'Pays :', {'label_attr' : {'class' : 'mt-3'}})}}
+		{{form_widget(userForm.pays, {'attr' : {'class' : 'form-control input-inscription'}})}}
+
+		{{form_label(userForm.telephone,'Téléphone :', {'label_attr' : {'class' : 'mt-3'}})}}
+		{{form_widget(userForm.telephone, {'attr' : {'class' : 'form-control input-inscription'}})}}
+
+
+		{{form_widget(userForm.Enregistrer, {'attr' : {'class' : 'btn btn-lg mt-3 btn-co btn-co-login',}})}}
+
+		{{form_end(userForm)}}
+
+	</div>
+
 {% endblock %}
