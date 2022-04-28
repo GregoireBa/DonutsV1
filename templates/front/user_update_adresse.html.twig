@@ -2,6 +2,8 @@
 
 {% block body %}
 
+<div class="box-login">
+<h1 class="h1-30 pt-2">Modification de l'adresse de facturation</h1>
 {{form_start(userAdresse)}}
 
         {{form_label(userAdresse.name,'Nom :', {'label_attr' : {'class' : 'mt-3'}})}}
@@ -28,5 +30,5 @@
         {{form_widget(userAdresse.Enregistrer, {'attr' : {'class' : 'btn btn-lg mt-3 btn-co btn-co-login',}})}}
 
 {{form_end(userAdresse)}}
-
+</div>
 {% endblock %}
