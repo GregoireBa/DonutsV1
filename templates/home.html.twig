@@ -13,7 +13,7 @@
 
 						<img src="{{ asset("media/" ~ donut.photo) }}" alt="donuts">
 
-						<button class="btn-commande">Commander</button>
+						<a href="{{path("card_add",{id: donut.id})}}" class="btn-commande">Commander</a>
 						<p>{{donut.description}}</p>
 					</div>
 				</div>

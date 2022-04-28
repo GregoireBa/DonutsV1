@@ -14,6 +14,8 @@
 
         {{form_widget(userMdp.Enregistrer, {'attr' : {'class' : 'btn btn-lg mt-3 btn-co btn-co-login',}})}}
 
+        {{form_errors(userMdp.password.invalid_message)}}
+
 {{form_end(userMdp)}}
 
 
