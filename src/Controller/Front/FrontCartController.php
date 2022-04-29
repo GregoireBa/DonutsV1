@@ -5,57 +5,49 @@ namespace App\Controller\Front;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Produit;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
 
 /**
  * @Route("/cart", name="cart_")
  */
 class FrontCartController extends AbstractController
 {
+
     /**
      * @Route("/", name="index")
      */
-    public function index(SessionInterface $session, ProduitRepository $produitRepository)
-    {   
-        $panier= $session->get("panier",[]);
+    public function index(SessionInterface $session,ProduitRepository $produitRepository){
 
-        // On "fabrique" les données
-        $dataPanier[] = [];
-        $total = 0;
-
-        foreach($panier as $id => $quantite){
-            $produit = $produitRepository->find($id);
-            $dataPanier = [
-                "produit" => $produit,
-                "quantite" => $quantite
+        $panier = $session->get('panier',[]);
+        $panierData = [];
+        foreach($panier as $id => $quantity){
+            $panierData[] = [
+                'produit' => $produitRepository->find($id),
+                'quantite' => $quantity
             ];
-            $total += $produit->getPrix()*$quantite; 
         }
-
-        return $this->render('front/cart_user.html.twig', ["dataPanier" => $dataPanier,"total" =>$total]);
+        //dd($panierData);
+        return $this->render("base.html.twig", ["panierData"=> $panierData]);
     }
 
     /**
      * @Route("/add/{id}", name="add")
      */
-    public function add(Produit $product, SessionInterface $session){
-        
-        //Récup le panier actuel
-        $panier = $session->get("panier",[]);
-        $id = $product->getId();
+    public function add($id,SessionInterface $session){
+
+        $panier = $session->get('panier',[]);
 
         if(!empty($panier[$id])){
             $panier[$id]++;
         }else{
-            $panier[$id] = 1 ;
+            $panier[$id] = 1;
         }
 
-        //save dans la sesion 
-        $session->set("panier",$panier);
-        
-        return $this->redirectToRoute("cart_index");
+        $session->set('panier',$panier);
+        dd($session->get('panier'));
+
     }
 }

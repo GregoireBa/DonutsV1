@@ -17,7 +17,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class AdminProduitController extends AbstractController
 {
     /**
-     * @Route("/admin/produits", name="admin_list_produit")
+     * @Route("/admin/listproduits", name="admin_list_produit")
      */
     public function list_produit(ProduitRepository $produitRepository)
     {
