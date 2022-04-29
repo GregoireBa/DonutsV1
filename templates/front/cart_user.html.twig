@@ -1,7 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FrontCartController!{% endblock %}
+{% block title %}Hello FrontCartController!
+{% endblock %}
 
 {% block body %}
+	<div class="container">
+		<H3>Votre panier :</H3>
+	</div>
+	<div class="container">
 
+		<table class="table">
+			<thead class="tab-thead">
+				<tr>
+					<th class="br-thead-left" scope="col">ID</th>
+					<th scope="col">Titre :</th>
+					<th scope="col">Description</th>
+					<th scope="col">Saveur</th>
+					<th scope="col">Prix</th>
+					<th scope="col">Stock</th>
+					<th scope="col">Photo</th>
+					<th class="br-thead-right" scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody class="tab-tbody">
+				{% for element in dataPanier %}
+					<tr>
+						<th scope="row">{{element.produit.id}}</th>
+						<td>{{element.produit.titre}}</td>
+						<td>{{element.produit.description}}</td>
+						<td>{{element.produit.saveur}}</td>
+						<img src="{{ asset("media/" ~ element.donut.photo) }}" alt="donuts">
+						<td>{{element.produit.prix}}</td>
+						<td>{{element.quantite}}</td>
+						<td>
+							<a class="btn-action" href="#">
+								<i class="fa-solid fa-trash-can"></i>
+							</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td>Votre panier est vide</td>
+					</tr>
+
+				{% endfor %}
+			</tbody>
+		</table>
+		<div class="footer-tab"></div>
+	</div>
+	{{dump()}}
 {% endblock %}
