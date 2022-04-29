@@ -4,9 +4,10 @@ namespace App\Controller\Front;
 
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Produit;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
 /**
@@ -40,10 +41,11 @@ class FrontCartController extends AbstractController
     /**
      * @Route("/add/{id}", name="add")
      */
-    public function add($id, SessionInterface $session){
+    public function add(Produit $product, SessionInterface $session){
         
         //Récup le panier actuel
         $panier = $session->get("panier",[]);
+        $id = $product->getId();
 
         if(!empty($panier[$id])){
             $panier[$id]++;

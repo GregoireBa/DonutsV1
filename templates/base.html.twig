@@ -14,97 +14,147 @@
 		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 		<title>Donuts</title>
 	</head>
-<body>
+	<body>
 
-	<header>
-		<nav class="navbar navbar-expand-lg">
-			<div class="container-fluid">
+		<header>
+			<nav class="navbar navbar-expand-lg">
+				<div class="container-fluid">
 
-				<a class="navbar-brand" href="{{ path ('app_main') }}"><img class="logo" src="{{ asset('media/logov2.png') }}"></a>
+					<a class="navbar-brand" href="{{ path ('app_main') }}"><img class="logo" src="{{ asset('media/logov2.png') }}"></a>
 
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-					<i class="fa-solid fa-bars-staggered"></i>
-				</button>
-				<div class="menuflex">
-					<div class="collapse navbar-collapse" id="navbarsExample05">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="#">Qui sommes-nous ?</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Nos stands</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Jobs</a>
-							</li>
-						</ul>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+						<i class="fa-solid fa-bars-staggered"></i>
+					</button>
+					<div class="menuflex">
+						<div class="collapse navbar-collapse" id="navbarsExample05">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="#">Qui sommes-nous ?</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">Nos stands</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">Jobs</a>
+								</li>
+							</ul>
+						</div>
+
+						{# SI L'USER EST CO BOUTON PROFIL + DECONNEXION + PANIER #}
+						{% if app.user %}
+							<div
+								class="box-btn-menu">
+
+								{# PANIER #}
+								<a class="a-panier" data-bs-toggle="offcanvas" href="#offcanvasRight" role="button" aria-controls="offcanvasRight">
+									<div class="box-panier">
+
+										<i class="fa-solid fa-cart-shopping btn-panier"></i>
+										<span class="s-text">Panier</span>
+
+										<span class="nbarticles">1</span>
+									</div>
+								</a>
+
+								{# USER #}
+								<a href="{{path('front_update_user')}}" class="a-user">
+									<div class="box-user">
+										<i class="fa-solid fa-user btn-panier"></i>
+										<span class="s-text-user">profil</span>
+									</div>
+								</a>
+
+								<a href="{{ path ('app_logout') }}" class="btn-deco">
+									<i class="fa-solid fa-circle-xmark"></i>
+								</a>
+
+
+							</div>
+						{% else %}
+							{# BOUTON CONNEXION SI PAS LOG OU INSCRIPTION SI PAS INSCRIT #}
+							<div class="box-btn-menu">
+
+								<a href="{{ path ('app_login') }}">
+									<button class="btn-connexion btn-co">Connexion</button>
+								</a>
+
+								<a href="{{ path ('front_create_user') }}">
+									<button class="btn-connexion btn-co">Inscription</button>
+								</a>
+
+							</div>
+						{% endif %}
 					</div>
-
-					{# SI L'USER EST CO BOUTON PROFIL + DECONNEXION + PANIER #}
-					{% if app.user %}
-						<div
-							class="box-btn-menu">
-
-							{# PANIER #}
-							<a href="#" class="a-panier">
-								<div class="box-panier">
-
-									<i class="fa-solid fa-cart-shopping btn-panier"></i>
-									<span class="s-text">Panier</span>
-
-									<span class="nbarticles">1</span>
-								</div>
-							</a>
-
-							{# USER #}
-							<a href="{{path('front_update_user')}}" class="a-user">
-								<div class="box-user">
-									<i class="fa-solid fa-user btn-panier"></i>
-									<span class="s-text-user">profil</span>
-								</div>
-							</a>
-
-							<a href="{{ path ('app_logout') }}" class="btn-deco">
-								<i class="fa-solid fa-circle-xmark"></i>
-							</a>
-
-
-						</div>
-					{% else %}
-						{# BOUTON CONNEXION SI PAS LOG OU INSCRIPTION SI PAS INSCRIT #}
-						<div class="box-btn-menu">
-
-							<a href="{{ path ('app_login') }}">
-								<button class="btn-connexion btn-co">Connexion</button>
-							</a>
-
-							<a href="{{ path ('front_create_user') }}">
-								<button class="btn-connexion btn-co">Inscription</button>
-							</a>
-
-						</div>
-					{% endif %}
 				</div>
+			</nav>
+		</header>
+
+
+		<main class="flex-shrink-0"> {% block body %}{% endblock %}
+
+			{# POP UP PANIER #}
+
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+				<div class="offcanvas-header">
+					<div class="d-flex align-items-center ">
+					<h5 class="offcanvas-title" id="offcanvasRightLabel">Panier</h5>
+					<span class="badge rounded-pill bg-dark ms-2">3</span>
+					</div>
+					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+
+				{# BODY PANIER #}
+				<div class="offcanvas-body">
+
+					<h2 class="mb-3">Les articles de votre panier</h2>
+
+					<ul class="list-group mb-3">
+
+						<li class="list-group-item d-flex justify-content-between lh-sm">
+							<div>
+								<h6 class="my-0">Product name</h6>
+								<small class="text-muted">Brief description</small>
+							</div>
+							<span class="text-muted">12€</span>
+						</li>
+
+						<li class="list-group-item d-flex justify-content-between lh-sm">
+							<div>
+								<h6 class="my-0">Second product</h6>
+								<small class="text-muted">Brief description</small>
+							</div>
+							<span class="text-muted">8€</span>
+						</li>
+
+						<li class="list-group-item d-flex justify-content-between lh-sm">
+							<div>
+								<h6 class="my-0">Third item</h6>
+								<small class="text-muted">Brief description</small>
+							</div>
+							<span class="text-muted">5€</span>
+						</li>
+						
+						<li class="list-group-item d-flex justify-content-between">
+							<span>Total (EUR)</span>
+							<strong>25€</strong>
+						</li>
+					</ul>
+					
+					<a class="btn bg-success bg-gradient btn-final btn-commande" href="#" alt="passez commande">Finalisez votre commande</a>
+
+				</div>
+				{# ======== #}
+
 			</div>
-		</nav>
-	</header>
-
-
-		<main class="flex-shrink-0">
-		
-			{% block body %}
-			
-			
-			{% endblock %}
+			{# ============================= #}
 
 		</main>
 
 
 		<footer class="footer-d footer mt-5 py-3 border-top">
-			<p class="col-md-4 mb-0 text-muted">© 2021 Company, Inc</p>
+			<p class="col-md-4 mb-0 text-muted">© 2022 Donuts, Inc - Grégoire B & Buhari Y</p>
 
 			<a href="{{ path ('app_main') }}" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
 				<img class="logo_footer" src="{{ asset('media/donuts_footer.png') }}" alt="logo_footer">
@@ -122,13 +172,15 @@
 				</li>
 			</ul>
 		</footer>
-
-
+		<script>
+			var offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
+var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
+return new bootstrap.Offcanvas(offcanvasEl)
+})
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+		<script src="{{ asset('js/scriptSlider.js') }}"></script>
 	</body>
-
-
-
-	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  	<script src="{{ asset('js/scriptSlider.js') }}"></script>
 
 </html>
