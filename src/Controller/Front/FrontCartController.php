@@ -17,23 +17,6 @@ class FrontCartController extends AbstractController
 {
 
     /**
-     * @Route("/", name="index")
-     */
-    public function index(SessionInterface $session,ProduitRepository $produitRepository){
-
-        $panier = $session->get('panier',[]);
-        $panierData = [];
-        foreach($panier as $id => $quantity){
-            $panierData[] = [
-                'produit' => $produitRepository->find($id),
-                'quantite' => $quantity
-            ];
-        }
-        //dd($panierData);
-        return $this->render("base.html.twig", ["panierData"=> $panierData]);
-    }
-
-    /**
      * @Route("/add/{id}", name="add")
      */
     public function add($id,SessionInterface $session){
@@ -47,7 +30,8 @@ class FrontCartController extends AbstractController
         }
 
         $session->set('panier',$panier);
-        dd($session->get('panier'));
+        //dd($session->get('panier'));
+        return $this->redirectToRoute('app_main');
 
     }
 }

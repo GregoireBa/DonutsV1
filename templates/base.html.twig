@@ -111,24 +111,24 @@
 					<h2 class="mb-3">Les articles de votre panier</h2>
 
 					<ul class="list-group mb-3">
-							{{dump()}}
-						{# {% if panierData | length > 0 %}
-							{% for item in panierData %}
+							{# {{dump()}} #}
+						{% if gPanierData.showCart() | length > 0 %}
+							{% for item in gPanierData.showCart() %}
 								<li class="list-group-item d-flex justify-content-between lh-sm">
 									<div>
-										<h6 class="my-0">{{item.produit.titre}}</h6>
-										<small class="text-muted">Brief description</small>
+										<h6 class="my-0">{{item.produit.titre}} x {{item.quantite}}</h6>
+										<small class="text-muted">{{item.produit.description}}</small>
 									</div>
-									<span class="text-muted">12€</span>
+									<span class="text-muted">{{item.produit.prix * item.quantite}} €</span>
 								</li>
 							{% endfor %}
 						{% else %}
 							<p>c'est vide akhy !</p>
-						{% endif %} #}
+						{% endif %}
 
 						<li class="list-group-item d-flex justify-content-between">
 							<span>Total (EUR)</span>
-							<strong>25€</strong>
+							<strong>€</strong>
 						</li>
 					</ul>
 

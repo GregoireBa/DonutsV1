@@ -3,6 +3,7 @@ twig:
 
     globals:
         gProfils: '@App\Globals\Profil'
+        gPanierData: '@App\Globals\Cart'
 
 when@test:
     twig:
