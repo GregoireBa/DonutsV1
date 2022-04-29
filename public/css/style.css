@@ -253,6 +253,12 @@ img {
 }
 
 
+.btn-final{
+    display: flex;
+    justify-content: center;
+    color:white;
+}
+
 /* FICHE DONUTS */
 
 .prix_donut {
